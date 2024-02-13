@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  seeu
+//  Watch
 //
-//  Created by 김범석 on 2024/01/18.
+//  Created by 김범석 on 2024/01/14.
 //
 
 import UIKit
@@ -10,14 +10,66 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    let vc = UIViewController()
+    var keyWindow: UIWindow?
+    
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        //guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = MainTabVC()
+            self.window = window
+            window.makeKeyAndVisible()
+        }
+
+        
     }
+        
+        
+        // SceneDelegate 설정
+//        window?.windowScene = windowScene
+//
+//        self.window = UIWindow(windowScene: windowScene)
+//        //window = UIWindow(windowScene: windowScene)
+//
+//        let rootViewController = MainTabVC()
+//        //let mainViewController = MainTabVC()
+//
+//        let navigationController = UINavigationController(rootViewController: rootViewController)
+//        //let navigationController = UINavigationController(rootViewController: mainViewController)
+//
+//        self.window?.rootViewController = navigationController
+//        //window?.rootViewController = navigationController
+//
+//        window?.makeKeyAndVisible()
+        
+        
+        
+        // 해당 부분은 keywindow가 버전 오류가 떠서 넣은거임 
+//        if #available(iOS 13.0, *) {
+//
+//            keyWindow = UIApplication
+//                .shared
+//                .connectedScenes
+//                .compactMap { $0 as? UIWindowScene }
+//                .flatMap { $0.windows }
+//                .first { $0.isKeyWindow }
+//
+//        } else {
+//
+//            keyWindow = UIApplication.shared.keyWindow
+//
+//        }
+//
+//        keyWindow?.rootViewController = vc
+//        
+//        
+//        
+//    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
